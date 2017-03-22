@@ -113,6 +113,7 @@
 		88F61AA91E8242DF00BBACA2 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F61AA11E8242DF00BBACA2 /* AFURLRequestSerialization.m */; };
 		88F61AAA1E8242DF00BBACA2 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F61AA31E8242DF00BBACA2 /* AFURLResponseSerialization.m */; };
 		88F61AAB1E8242DF00BBACA2 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F61AA51E8242DF00BBACA2 /* AFURLSessionManager.m */; };
+		88F61AAD1E824B6600BBACA2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F61AAC1E824B6600BBACA2 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +239,7 @@
 		88F61AA31E8242DF00BBACA2 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		88F61AA41E8242DF00BBACA2 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		88F61AA51E8242DF00BBACA2 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		88F61AAC1E824B6600BBACA2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F61AAD1E824B6600BBACA2 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +273,7 @@
 		88F619BA1E8241CE00BBACA2 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				88F61AAC1E824B6600BBACA2 /* CoreLocation.framework */,
 				88F619BE1E8241CE00BBACA2 /* AppDelegate.h */,
 				88F619BF1E8241CE00BBACA2 /* AppDelegate.m */,
 				88F619C11E8241CE00BBACA2 /* ViewController.h */,

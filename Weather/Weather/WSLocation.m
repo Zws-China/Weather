@@ -29,7 +29,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.manager = [CLLocationManager new];
+        self.manager = [[CLLocationManager alloc]init];
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
             [self.manager requestWhenInUseAuthorization];
         }
@@ -48,6 +48,14 @@
 - (void)getUserLoaction:(saveLocationBlock)locationBlock
 {
     if (![CLLocationManager locationServicesEnabled]) {
+        return;
+    }
+    if ([CLLocationManager locationServicesEnabled]  //确定用户的位置服务启用
+        &&[CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
+        //位置服务是在设置中禁用
+        _savelocationBlock = [locationBlock copy];
+        _savelocationBlock(39.9110130000,116.4135540000,@"北京");
+
         
         return;
     }

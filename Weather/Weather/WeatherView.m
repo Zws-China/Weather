@@ -106,7 +106,7 @@
     [self changeImageAnimatedWithView:weatherImg AndImage: [UIImage imageNamed:[model.todayDic objectForKey:@"code_day"]]];
 
     
-    tempLabel.text = [NSString stringWithFormat:@"%@℃/%@℃",[model.todayDic objectForKey:@"high"],[model.todayDic objectForKey:@"low"]];
+    tempLabel.text = [NSString stringWithFormat:@"%@℃ / %@℃",[model.todayDic objectForKey:@"high"],[model.todayDic objectForKey:@"low"]];
     dayLabel1.text =[model.tomorrowDic objectForKey:@"date"];
 //    smallWeatherImg1.image = [UIImage imageNamed:[model.tomorrowDic objectForKey:@"code_day"]];
     [self changeImageAnimatedWithView:smallWeatherImg1 AndImage: [UIImage imageNamed:[model.tomorrowDic objectForKey:@"code_day"]]];
