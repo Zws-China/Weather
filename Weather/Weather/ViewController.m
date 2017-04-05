@@ -14,7 +14,6 @@
 #import "WeatherView.h"
 #import "CityGroupTableViewController.h"
 
-
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -43,6 +42,10 @@
 //雨天动画
 @property (nonatomic, strong) UIImageView *rainCloudImage;//乌云
 @property (nonatomic, strong) NSArray *jsonArray;
+
+//下雪动画
+
+
 @end
 
 @implementation ViewController
@@ -170,12 +173,14 @@
     [self.sunImage removeFromSuperview];
     [self.sunshineImage removeFromSuperview];
     [self.sunCloudImage removeFromSuperview];
-    
     [self.rainCloudImage removeFromSuperview];
     
     for (NSInteger i = 0; i < _jsonArray.count; i++) {
         UIImageView *rainLineView = (UIImageView *)[self.view viewWithTag:100+i];
-        [rainLineView removeFromSuperview];
+        [rainLineView removeFromSuperview];//移除下雨
+        
+        UIImageView *snowView = (UIImageView *)[self.view viewWithTag:1000+i];
+        [snowView removeFromSuperview];//移除雪
     }
     
 }
@@ -200,7 +205,7 @@
     }
     else if (type >= 20 && type < 26) { //雪
         [self changeImageAnimated:[UIImage imageNamed:@"bg_snow_night.jpg"]];
-        
+        [self snow];
     }
     else if (type >= 26 && type < 30) { //沙尘暴
         [self changeImageAnimated:[UIImage imageNamed:@"bg_sunny_day.jpg"]];
@@ -342,7 +347,28 @@
     
 }
 
+//下雪
+- (void)snow {
 
+    //加载JSON文件
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainData.json" ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    //将JSON数据转为NSArray或NSDictionary
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    _jsonArray = dict[@"weather"][@"image"];
+    for (NSInteger i = 0; i < _jsonArray.count; i++) {
+        
+        NSDictionary *dic = [_jsonArray objectAtIndex:i];
+        UIImageView *snowView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"snow"]];
+        snowView.tag = 1000+i;
+        NSArray *originArr = [dic[@"-origin"] componentsSeparatedByString:@","];
+        snowView.frame = CGRectMake([originArr[0] integerValue]*widthPix , [originArr[1] integerValue], arc4random()%7+3, arc4random()%7+3);
+        [self.view addSubview:snowView];
+        [snowView.layer addAnimation:[self rainAnimationWithDuration:5+i%5] forKey:nil];
+        [snowView.layer addAnimation:[self rainAlphaWithDuration:5+i%5] forKey:nil];
+    }
+    
+}
 
 
 //动画横向移动方法
@@ -398,6 +424,22 @@
     showViewAnn.removedOnCompletion = NO;
     
     return showViewAnn;
+}
+
+//下雪动画方法
+- (CABasicAnimation *)snowAnimationWithDuration:(NSInteger)duration{
+    
+    CABasicAnimation* caBaseTransform = [CABasicAnimation animation];
+    caBaseTransform.duration = duration;
+    caBaseTransform.keyPath = @"transform";
+    caBaseTransform.repeatCount = MAXFLOAT;
+    caBaseTransform.removedOnCompletion = NO;
+    caBaseTransform.fillMode = kCAFillModeForwards;
+    caBaseTransform.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(0, 0, 0)];
+    caBaseTransform.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(0, kScreenHeight, 0)];
+    
+    return caBaseTransform;
+    
 }
 
 

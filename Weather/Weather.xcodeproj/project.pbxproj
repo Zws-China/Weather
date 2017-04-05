@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8814BE011E949492000BA16B /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8814BE001E949492000BA16B /* snow.png */; };
 		88F619BD1E8241CE00BBACA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F619BC1E8241CE00BBACA2 /* main.m */; };
 		88F619C01E8241CE00BBACA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F619BF1E8241CE00BBACA2 /* AppDelegate.m */; };
 		88F619C31E8241CE00BBACA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F619C21E8241CE00BBACA2 /* ViewController.m */; };
@@ -117,6 +118,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8814BE001E949492000BA16B /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
 		88F619B81E8241CE00BBACA2 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F619BC1E8241CE00BBACA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88F619BE1E8241CE00BBACA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				88F619F91E82421F00BBACA2 /* animation */,
 				88F61A321E82422400BBACA2 /* 天气现象图标 */,
+				8814BE001E949492000BA16B /* snow.png */,
 				88F619D31E82420F00BBACA2 /* bg_fog_day.jpg */,
 				88F619D41E82420F00BBACA2 /* bg_fog_night.jpg */,
 				88F619D51E82420F00BBACA2 /* bg_fog.jpg */,
@@ -547,6 +550,7 @@
 				88F619ED1E82420F00BBACA2 /* bg_rain_day.jpg in Resources */,
 				88F61A611E82422500BBACA2 /* 14.png in Resources */,
 				88F61A751E82422500BBACA2 /* 32.png in Resources */,
+				8814BE011E949492000BA16B /* snow.png in Resources */,
 				88F61A261E82421F00BBACA2 /* ele_sunnyCloud1.png in Resources */,
 				88F61A711E82422500BBACA2 /* 29.png in Resources */,
 				88F619F31E82420F00BBACA2 /* ele_rainLine1.png in Resources */,
@@ -778,6 +782,7 @@
 				88F619D11E8241CE00BBACA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
