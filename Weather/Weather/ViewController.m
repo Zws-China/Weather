@@ -366,6 +366,7 @@
         [self.view addSubview:snowView];
         [snowView.layer addAnimation:[self rainAnimationWithDuration:5+i%5] forKey:nil];
         [snowView.layer addAnimation:[self rainAlphaWithDuration:5+i%5] forKey:nil];
+        [snowView.layer addAnimation:[self sunshineAnimationWithDuration:5] forKey:nil];//雪花旋转
     }
     
 }
@@ -424,22 +425,6 @@
     showViewAnn.removedOnCompletion = NO;
     
     return showViewAnn;
-}
-
-//下雪动画方法
-- (CABasicAnimation *)snowAnimationWithDuration:(NSInteger)duration{
-    
-    CABasicAnimation* caBaseTransform = [CABasicAnimation animation];
-    caBaseTransform.duration = duration;
-    caBaseTransform.keyPath = @"transform";
-    caBaseTransform.repeatCount = MAXFLOAT;
-    caBaseTransform.removedOnCompletion = NO;
-    caBaseTransform.fillMode = kCAFillModeForwards;
-    caBaseTransform.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(0, 0, 0)];
-    caBaseTransform.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(0, kScreenHeight, 0)];
-    
-    return caBaseTransform;
-    
 }
 
 

@@ -7,18 +7,18 @@
 
 
 # PhotoShoot
-![image](https://github.com/Zws-China/.../blob/master/Weather.gif)
+![image](https://github.com/Zws-China/.../blob/master/Weather.gif)<br>
 ![image](https://github.com/Zws-China/.../blob/master/suny.gif)
-![image](https://github.com/Zws-China/.../blob/master/cloud.gif)
+![image](https://github.com/Zws-China/.../blob/master/cloud.gif)<br>
 ![image](https://github.com/Zws-China/.../blob/master/rain.gif)
-
+![这里写图片描述](http://img.blog.csdn.net/20170407173624997?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)<br>
 
 # How To Use
 
 ```ruby
 
 
-//动画横向移动方法
+//动画横向移动方法（云、鸟移动）
 - (CABasicAnimation *)birdFlyAnimationWithToValue:(NSNumber *)toValue duration:(NSInteger)duration{
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
     animation.toValue = toValue;
@@ -29,7 +29,7 @@
     return animation;
 }
 
-//动画旋转方法
+//动画旋转方法，（阳光旋转、雪花旋转）
 - (CABasicAnimation *)sunshineAnimationWithDuration:(NSInteger)duration{
     //旋转动画
     CABasicAnimation* rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -43,7 +43,7 @@
     return rotationAnimation;
 }
 
-//下雨动画方法
+//下雨、下雪动画方法
 - (CABasicAnimation *)rainAnimationWithDuration:(NSInteger)duration{
 
     CABasicAnimation* caBaseTransform = [CABasicAnimation animation];
