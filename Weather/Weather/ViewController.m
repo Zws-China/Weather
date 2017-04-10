@@ -29,6 +29,8 @@
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
 @property(nonatomic,strong)WeatherView *weatherV;
 
+@property(nonatomic,strong)UIButton *changeCityBtn;//切换城市
+
 //多云动画
 @property (nonatomic, strong) NSMutableArray *imageArr;//鸟图片数组
 @property (nonatomic, strong) UIImageView *birdImage;//鸟本体
@@ -53,6 +55,7 @@
     [super viewWillAppear:animated];
     self.navigationController.delegate = self;
     
+    [self.view bringSubviewToFront:self.changeCityBtn];//懒加载，将切换城市按钮拿到最上层
 }
 - (WeatherView *)weatherV {
     if (!_weatherV) {
@@ -61,7 +64,19 @@
     return _weatherV;
 }
 
-
+-(UIButton *)changeCityBtn {
+    if (!_changeCityBtn) {
+        _changeCityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _changeCityBtn.frame = CGRectMake(kScreenWidth-44-10, 20, 44, 44);
+        _changeCityBtn.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
+        [_changeCityBtn setImage:[UIImage imageNamed:@"location_hardware"] forState:UIControlStateNormal];
+        [self.view addSubview:_changeCityBtn];
+        [_changeCityBtn addTarget:self action:@selector(changeCity) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    
+    return _changeCityBtn;
+}
 
 
 - (void)viewDidLoad {
@@ -84,6 +99,11 @@
     
     CityGroupTableViewController *cityCtrl = [[CityGroupTableViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cityCtrl];
+    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navBg3"]
+                           forBarPosition:UIBarPositionAny
+                               barMetrics:UIBarMetricsDefault];
+    nav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    nav.navigationBar.tintColor = [UIColor whiteColor];
     [self presentViewController:nav animated:YES completion:nil];
     
     __weak typeof(self) weakSelf = self;
@@ -200,8 +220,10 @@
         [self wind];//动画
     }
     else if (type >= 10 && type < 20) { //雨
-        [self changeImageAnimated:[UIImage imageNamed:@"bg_rain_day.jpg"]];
-        [self rain];
+//        [self changeImageAnimated:[UIImage imageNamed:@"bg_rain_day.jpg"]];
+//        [self rain];
+        [self changeImageAnimated:[UIImage imageNamed:@"bg_snow_night.jpg"]];
+        [self snow];
     }
     else if (type >= 20 && type < 26) { //雪
         [self changeImageAnimated:[UIImage imageNamed:@"bg_snow_night.jpg"]];
@@ -233,6 +255,8 @@
     }
     
     [self.view bringSubviewToFront:self.weatherV];
+    [self.view bringSubviewToFront:self.changeCityBtn];//懒加载，将切换城市按钮拿到最上层
+
 }
 
 //晴天动画
